@@ -58,41 +58,47 @@ element pop()
 }
 void path(void)
 {
-	int i, row, col,nextRow, nextCol, dir, found = FALSE;
-	element position;
-	mark[1][1] = 1; top = 0;
-	stack[0].row = 1; stack[0].col = 1; stack[0].dir = 1;
-	while (top > -1 && !found)
-	{
-		position = pop();
-		row = position.row; col = position.col;
-		dir = position.dir;
-		while (dir < 8 && !found)
-		{
-			nextRow = row + move[dir].vert;
-			nextCol = col + move[dir].horiz;
-			if (nextRow == EXIT_ROW && nextCol == EXIT_COL)
-				found = TRUE;
-			else if (!maze[nextRow][nextCol] && !mark[nextRow][nextCol])
-			{
-				mark[nextRow][nextCol] = 1;
-				position.row = row; position.col = col;
-				position.dir = ++dir;
-				push(position);
-				row = nextRow; col = nextCol; dir = 0;
-			} 
-			else ++dir;
-		}
-	}
-	if (found)
-	{
-		printf("The path is:\n");
-		printf("row col\n");
-		for (i = 0; i <= top; i++)
-			printf("%2d%5d", stack[i].row, stack[i].col);
-		printf("%2d%5d\n", row, col);
-		printf("%2d%5d\n", EXIT_ROW, EXIT_COL);
-	}
-	else printf("The maze does not have a path\n");
+    int i, row, col, nextRow, nextCol, dir, found = FALSE;
+    element position;
+    mark[1][1] = 1; top = 0;
+    stack[0].row = 1; stack[0].col = 1; stack[0].dir = 1;
+    while (top > -1 && !found)
+    {
+        position = pop();
+        row = position.row; col = position.col;
+        dir = position.dir;
+        while (dir < 8 && !found)
+        {
+            nextRow = row + move[dir].vert;
+            nextCol = col + move[dir].horiz;
+            if (nextRow < 0 || nextRow >= MAX_ROW || nextCol < 0 || nextCol >= MAX_COL) 
+            {
+                ++dir;
+                continue;
+            }
+            if (nextRow == EXIT_ROW && nextCol == EXIT_COL)
+                found = TRUE;
+            else if (!maze[nextRow][nextCol] && !mark[nextRow][nextCol])
+            {
+                mark[nextRow][nextCol] = 1;
+                position.row = row; position.col = col;
+                position.dir = ++dir;
+                push(position);
+                row = nextRow; col = nextCol; dir = 0;
+            }
+            else ++dir;
+        }
+    }
+    if (found)
+    {
+        printf("The path is:\n");
+        printf("row col\n");
+        for (i = 0; i <= top; i++)
+            printf("%2d%5d", stack[i].row, stack[i].col);
+        printf("%2d%5d\n", row, col);
+        printf("%2d%5d\n", EXIT_ROW, EXIT_COL);
+    }
+    else
+        printf("The maze does not have a path\n");
 }
 int main(void) { path(); }
