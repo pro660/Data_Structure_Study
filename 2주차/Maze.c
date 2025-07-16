@@ -1,4 +1,4 @@
-/* 4. ¹Ì·Î Ã£±â(±³Àç ±×¸² 3.8~3.10, ÇÁ·Î±×·¥ 3.12) */
+/* 4. ë¯¸ë¡œ ì°¾ê¸°(êµì¬ ê·¸ë¦¼ 3.8~3.10, í”„ë¡œê·¸ë¨ 3.12) */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,22 +10,22 @@
 #define TRUE 1
 #define FALSE 0
 typedef struct {
-	short int vert; // Çà
-	short int horiz; // ¿­
+	short int vert; // í–‰
+	short int horiz; // ì—´
 } offsets;
-offsets move[8] = {	 // °¢ ¹æÇâ¿¡ ´ëÇÑ ÀÌµ¿ ¹è¿­
-	{-1, 0},	// ºÏ (N)
-	{-1, 1},	// ºÏµ¿ (NE)
-	{0, 1},		// µ¿ (E)
-	{1, 1},		// ³²µ¿ (SE)
-	{1, 0},		// ³² (S)
-	{1, -1},	// ³²¼­ (SW)
-	{0, -1},	// ¼­ (W)
-	{-1, -1}	// ºÏ¼­ (NW)
+offsets move[8] = {	 // ê° ë°©í–¥ì— ëŒ€í•œ ì´ë™ ë°°ì—´
+	{-1, 0},	// ë¶ (N)
+	{-1, 1},	// ë¶ë™ (NE)
+	{0, 1},		// ë™ (E)
+	{1, 1},		// ë‚¨ë™ (SE)
+	{1, 0},		// ë‚¨ (S)
+	{1, -1},	// ë‚¨ì„œ (SW)
+	{0, -1},	// ì„œ (W)
+	{-1, -1}	// ë¶ì„œ (NW)
 };
 typedef struct {
-	short int row; // Çà
-	short int col; // ¿­
+	short int row; // í–‰
+	short int col; // ì—´
 	short int dir;
 } element;
 element stack[MAX_STACK_SIZE];
@@ -34,26 +34,26 @@ int top = -1;
 // Boolean IsFull (Stack) ::= top >= MAX_STACK_SIZE - 1;
 void stackFull()
 {
-	fprintf(stderr, "Stack is Full\n"); // Standard Error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-	exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+	fprintf(stderr, "Stack is Full\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+	exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 }
 element stackEmpty()
 {
 	element dummy = { '\0' };
-	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-	exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+	exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 	return dummy;
 }
 void push(element item)
-{ // Àü¿ª stack¿¡ itemÀ» »ğÀÔ
-	if (top >= MAX_STACK_SIZE - 1) // ½ºÅÃÀÌ ´Ù Ã¡´ÂÁö È®ÀÎ
+{ // ì „ì—­ stackì— itemì„ ì‚½ì…
+	if (top >= MAX_STACK_SIZE - 1) // ìŠ¤íƒì´ ë‹¤ ì°¼ëŠ”ì§€ í™•ì¸
 		stackFull();
 	stack[++top] = item;
 }
 element pop()
-{ // stackÀÇ ÃÖ»óÀÇ ¿ø¼Ò¸¦ ¹İÈ¯
-	if (top == -1) // ½ºÅÃÀÌ ÀÖ´ÂÁö È®ÀÎ
-		return stackEmpty(); // ¿À·ù Key¸¦ ¹İÈ¯
+{ // stackì˜ ìµœìƒì˜ ì›ì†Œë¥¼ ë°˜í™˜
+	if (top == -1) // ìŠ¤íƒì´ ìˆëŠ”ì§€ í™•ì¸
+		return stackEmpty(); // ì˜¤ë¥˜ Keyë¥¼ ë°˜í™˜
 	return stack[top--];
 }
 int mark[MAX_ROW][MAX_COL] = { 0 };
@@ -72,7 +72,7 @@ int maze[MAX_ROW][MAX_COL] = {
 	{ 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0 }
 };
 void path(void)
-{	// ¹Ì·Î¸¦ Åë°úÇÏ´Â °æ·Î°¡ ÀÖÀ¸¸é ±× °æ·Î¸¦ Ãâ·ÂÇÑ´Ù.
+{	// ë¯¸ë¡œë¥¼ í†µê³¼í•˜ëŠ” ê²½ë¡œê°€ ìˆìœ¼ë©´ ê·¸ ê²½ë¡œë¥¼ ì¶œë ¥í•œë‹¤.
 	int i, row, col, nextRow, nextCol, dir, found = FALSE;
 	element position;
 	mark[1][1] = 1; top = 0;
@@ -83,22 +83,22 @@ void path(void)
 		row = position.row; col = position.col;
 		dir = position.dir;
 		while (dir < 8 && !found)
-		{	// dir ¹æÇâÀ¸·Î ÀÌµ¿
+		{	// dir ë°©í–¥ìœ¼ë¡œ ì´ë™
 			nextRow = row + move[dir].vert;
 			nextCol = col + move[dir].horiz;
 			if (nextRow >= 0 && nextRow < MAX_ROW && nextCol >= 0 && nextCol < MAX_COL)
-			{	// nextRow¿Í nextColÀÌ ¹è¿­(¹Ì·Î) ¹üÀ§¸¦ ¹ş¾î³ªÁö ¾Êµµ·Ï ¹æÁö.
+			{	// nextRowì™€ nextColì´ ë°°ì—´(ë¯¸ë¡œ) ë²”ìœ„ë¥¼ ë²—ì–´ë‚˜ì§€ ì•Šë„ë¡ ë°©ì§€.
 				if (nextRow == EXIT_ROW && nextCol == EXIT_COL)
 				{
 					position.row = row;
 					position.col = col;
 					position.dir = dir;
-					push(position); // µµÂø Àü À§Ä¡ ÀúÀå
+					push(position); // ë„ì°© ì „ ìœ„ì¹˜ ì €ì¥
 
 					position.row = nextRow;
 					position.col = nextCol;
 					position.dir = 0;
-					push(position); // µµÂø À§Ä¡ ÀúÀå
+					push(position); // ë„ì°© ìœ„ì¹˜ ì €ì¥
 					found = TRUE;
 				}
 				else if (!maze[nextRow][nextCol] && !mark[nextRow][nextCol])
