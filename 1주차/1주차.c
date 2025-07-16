@@ -1,15 +1,15 @@
 /*
-1. ¹®ÀÚ¸¦ ÀúÀåÇÏ±â À§ÇØ ¹è¿­À» ÀÌ¿ëÇÑ ½ºÅÃ°ú ¿øÇü Å¥ ±¸Çö
-2. ¹®ÀÚ¸¦ ÀúÀåÇÏ±â À§ÇØ ¿¬°á¸®½ºÆ®¸¦ ÀÌ¿ëÇÑ ½ºÅÃ°ú Å¥ ±¸Çö
-   (»ğÀÔ, »èÁ¦, Ãâ·Â, Á¾·á ±â´É)
-3. ´ÙÇ×½ÄÀÇ µ¡¼À(¹è¿­ ¹öÀü, ¸®½ºÆ® ¹öÀü) º¹½À
+1. ë¬¸ìë¥¼ ì €ì¥í•˜ê¸° ìœ„í•´ ë°°ì—´ì„ ì´ìš©í•œ ìŠ¤íƒê³¼ ì›í˜• í êµ¬í˜„
+2. ë¬¸ìë¥¼ ì €ì¥í•˜ê¸° ìœ„í•´ ì—°ê²°ë¦¬ìŠ¤íŠ¸ë¥¼ ì´ìš©í•œ ìŠ¤íƒê³¼ í êµ¬í˜„
+   (ì‚½ì…, ì‚­ì œ, ì¶œë ¥, ì¢…ë£Œ ê¸°ëŠ¥)
+3. ë‹¤í•­ì‹ì˜ ë§ì…ˆ(ë°°ì—´ ë²„ì „, ë¦¬ìŠ¤íŠ¸ ë²„ì „) ë³µìŠµ
 */
 
-/* ¹®ÀÚ ÀúÀå ¹è¿­ ½ºÅÃ */
+/* ë¬¸ì ì €ì¥ ë°°ì—´ ìŠ¤íƒ */
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define MAX_STACK_SIZE 10 // ÃÖ´ë ½ºÅÃ Å©±â
+//#define MAX_STACK_SIZE 10 // ìµœëŒ€ ìŠ¤íƒ í¬ê¸°
 //typedef struct
 //{
 //	char key;
@@ -20,26 +20,26 @@
 //// Boolean IsFull (Stack) ::= top >= MAX_STACK_SIZE - 1;
 //void stackFull()
 //{
-//	fprintf(stderr, "Stack is Full\n"); // Standard Error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Stack is Full\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //}
 //element stackEmpty()
 //{
 //	element dummy = { '\0' };
-//	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	return dummy;
 //}
 //void push(element item)
-//{ // Àü¿ª stack¿¡ itemÀ» »ğÀÔ
-//	if (top >= MAX_STACK_SIZE - 1) // ½ºÅÃÀÌ ´Ù Ã¡´ÂÁö È®ÀÎ
+//{ // ì „ì—­ stackì— itemì„ ì‚½ì…
+//	if (top >= MAX_STACK_SIZE - 1) // ìŠ¤íƒì´ ë‹¤ ì°¼ëŠ”ì§€ í™•ì¸
 //		stackFull();
 //	stack[++top] = item;
 //}
 //element pop()
-//{ // stackÀÇ ÃÖ»óÀÇ ¿ø¼Ò¸¦ ¹İÈ¯
-//	if (top == -1) // ½ºÅÃÀÌ ÀÖ´ÂÁö È®ÀÎ
-//		return stackEmpty(); // ¿À·ù Key¸¦ ¹İÈ¯
+//{ // stackì˜ ìµœìƒì˜ ì›ì†Œë¥¼ ë°˜í™˜
+//	if (top == -1) // ìŠ¤íƒì´ ìˆëŠ”ì§€ í™•ì¸
+//		return stackEmpty(); // ì˜¤ë¥˜ Keyë¥¼ ë°˜í™˜
 //	return stack[top--];
 //}
 //int main()
@@ -49,7 +49,7 @@
 //
 //	for (n = 0; n < MAX_STACK_SIZE; n++)
 //	{
-//		printf("%d. ÀÔ·Â: ", n + 1);
+//		printf("%d. ì…ë ¥: ", n + 1);
 //		scanf_s(" %c", &i.key, 1);
 //		push(i);
 //	}
@@ -62,7 +62,7 @@
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define MAX_STACK_SIZE 10 // ÃÖ´ë ½ºÅÃ Å©±â
+//#define MAX_STACK_SIZE 10 // ìµœëŒ€ ìŠ¤íƒ í¬ê¸°
 //typedef struct
 //{
 //	char key;
@@ -73,26 +73,26 @@
 //// Boolean IsFull (Stack) ::= top >= MAX_STACK_SIZE - 1;
 //void stackFull()
 //{
-//	fprintf(stderr, "Stack is Full\n"); // Standard Error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Stack is Full\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //}
 //element stackEmpty()
 //{
 //	element dummy = { '\0' };
-//	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	return dummy;
 //}
 //void push(element item)
-//{ // Àü¿ª stack¿¡ itemÀ» »ğÀÔ
-//	if (top >= MAX_STACK_SIZE - 1) // ½ºÅÃÀÌ ´Ù Ã¡´ÂÁö È®ÀÎ
+//{ // ì „ì—­ stackì— itemì„ ì‚½ì…
+//	if (top >= MAX_STACK_SIZE - 1) // ìŠ¤íƒì´ ë‹¤ ì°¼ëŠ”ì§€ í™•ì¸
 //		stackFull();
 //	stack[++top] = item;
 //}
 //element pop()
-//{ // stackÀÇ ÃÖ»óÀÇ ¿ø¼Ò¸¦ ¹İÈ¯
-//	if (top == -1) // ½ºÅÃÀÌ ÀÖ´ÂÁö È®ÀÎ
-//		return stackEmpty(); // ¿À·ù Key¸¦ ¹İÈ¯
+//{ // stackì˜ ìµœìƒì˜ ì›ì†Œë¥¼ ë°˜í™˜
+//	if (top == -1) // ìŠ¤íƒì´ ìˆëŠ”ì§€ í™•ì¸
+//		return stackEmpty(); // ì˜¤ë¥˜ Keyë¥¼ ë°˜í™˜
 //	return stack[top--];
 //}
 //int main()
@@ -102,27 +102,27 @@
 //
 //	while (1)
 //	{
-//		printf("1. »ğÀÔ 2. »èÁ¦ 3. Á¾·á => ");
+//		printf("1. ì‚½ì… 2. ì‚­ì œ 3. ì¢…ë£Œ => ");
 //		scanf_s("%d", &menu);
 //		switch (menu)
 //		{
 //		case 1:
-//			printf("¸î °³¸¦ »ğÀÔ? => ");
+//			printf("ëª‡ ê°œë¥¼ ì‚½ì…? => ");
 //			scanf_s("%d", &count);
 //			for (i = 0; i < count; i++)
 //			{
-//				printf("ÀÔ·Â: ");
+//				printf("ì…ë ¥: ");
 //				scanf_s(" %c", &item.key, sizeof(char));
 //				push(item);
 //			}
 //			break;
 //		case 2:
-//			printf("¸î °³¸¦ »èÁ¦? => ");
+//			printf("ëª‡ ê°œë¥¼ ì‚­ì œ? => ");
 //			scanf_s("%d", &count);
 //			for (i = 0; i < count; i++)
 //			{
 //				element temp = pop();
-//				printf("»èÁ¦: %c\n", temp.key);
+//				printf("ì‚­ì œ: %c\n", temp.key);
 //			}
 //			break;
 //		case 3:
@@ -133,11 +133,11 @@
 //	}
 //}
 
-/* ¹®ÀÚ ÀúÀå ¹è¿­ ¿øÇü Å¥ */
+/* ë¬¸ì ì €ì¥ ë°°ì—´ ì›í˜• í */
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define MAX_QUEUE_SIZE 10 // Å¥ÀÇ ÃÖ´ë Å©±â
+//#define MAX_QUEUE_SIZE 10 // íì˜ ìµœëŒ€ í¬ê¸°
 //// queue createq(maxqueuesize) : : =
 //typedef struct {
 //	char key;
@@ -150,28 +150,28 @@
 //void queuefull()
 //{
 //	rear = 0;
-//	fprintf(stderr, "Queue is full\n"); // standard error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(1); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Queue is full\n"); // standard error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(1); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //}
 //element queueempty()
 //{
 //	element dummy = { '\0' };
-//	fprintf(stderr, "Queue is empty\n"); // standard error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(1); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Queue is empty\n"); // standard error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(1); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	return dummy;
 //}
 //void addq(element item)
-//{ // queue¿¡ itemÀ» »ğÀÔ
+//{ // queueì— itemì„ ì‚½ì…
 //	rear = (rear + 1) % MAX_QUEUE_SIZE;
 //	if (front == rear)
-//		queuefull(); // rear¸¦ ¸®¼Â½ÃÅ°°í ¿À·ù¸¦ ÇÁ¸°Æ®
+//		queuefull(); // rearë¥¼ ë¦¬ì…‹ì‹œí‚¤ê³  ì˜¤ë¥˜ë¥¼ í”„ë¦°íŠ¸
 //	queue[rear] = item;
 //}
 //element deleteq()
-//{ // queuedÀÇ ¾Õ ¿ø¼Ò¸¦ »èÁ¦
+//{ // queuedì˜ ì• ì›ì†Œë¥¼ ì‚­ì œ
 //	element item;
 //	if (front == rear)
-//		return queueempty();  // ¿À·ù key¸¦ ¹İÈ¯
+//		return queueempty();  // ì˜¤ë¥˜ keyë¥¼ ë°˜í™˜
 //	front = (front + 1) % MAX_QUEUE_SIZE;
 //	return queue[front];
 //}
@@ -182,7 +182,7 @@
 //
 //	for (n = 0; n < MAX_QUEUE_SIZE - 1; n++)
 //	{
-//		printf("%d. ÀÔ·Â: ", n + 1);
+//		printf("%d. ì…ë ¥: ", n + 1);
 //		scanf_s(" %c", &i.key, 1);
 //		addq(i);
 //	}
@@ -195,7 +195,7 @@
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define MAX_QUEUE_SIZE 10 // Å¥ÀÇ ÃÖ´ë Å©±â
+//#define MAX_QUEUE_SIZE 10 // íì˜ ìµœëŒ€ í¬ê¸°
 //// queue createq(maxqueuesize) : : =
 //typedef struct {
 //	char key;
@@ -208,28 +208,28 @@
 //void queuefull()
 //{
 //	rear = 0;
-//	fprintf(stderr, "Queue is full\n"); // standard error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(1); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Queue is full\n"); // standard error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(1); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //}
 //element queueempty()
 //{
 //	element dummy = { '\0' };
-//	fprintf(stderr, "Queue is empty\n"); // standard error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(1); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Queue is empty\n"); // standard error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(1); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	return dummy;
 //}
 //void addq(element item)
-//{ // queue¿¡ itemÀ» »ğÀÔ
+//{ // queueì— itemì„ ì‚½ì…
 //	rear = (rear + 1) % MAX_QUEUE_SIZE;
 //	if (front == rear)
-//		queuefull(); // rear¸¦ ¸®¼Â½ÃÅ°°í ¿À·ù¸¦ ÇÁ¸°Æ®
+//		queuefull(); // rearë¥¼ ë¦¬ì…‹ì‹œí‚¤ê³  ì˜¤ë¥˜ë¥¼ í”„ë¦°íŠ¸
 //	queue[rear] = item;
 //}
 //element deleteq()
-//{ // queuedÀÇ ¾Õ ¿ø¼Ò¸¦ »èÁ¦
+//{ // queuedì˜ ì• ì›ì†Œë¥¼ ì‚­ì œ
 //	element item;
 //	if (front == rear)
-//		return queueempty();  // ¿À·ù key¸¦ ¹İÈ¯
+//		return queueempty();  // ì˜¤ë¥˜ keyë¥¼ ë°˜í™˜
 //	front = (front + 1) % MAX_QUEUE_SIZE;
 //	return queue[front];
 //}
@@ -240,27 +240,27 @@
 //
 //	while (1)
 //	{
-//		printf("1. »ğÀÔ 2. »èÁ¦ 3. Á¾·á => ");
+//		printf("1. ì‚½ì… 2. ì‚­ì œ 3. ì¢…ë£Œ => ");
 //		scanf_s("%d", &menu);
 //		switch (menu)
 //		{
 //		case 1:
-//			printf("¸î °³¸¦ »ğÀÔ? => ");
+//			printf("ëª‡ ê°œë¥¼ ì‚½ì…? => ");
 //			scanf_s("%d", &count);
 //			for (i = 0; i < count; i++)
 //			{
-//				printf("ÀÔ·Â: ");
+//				printf("ì…ë ¥: ");
 //				scanf_s(" %c", &item.key, sizeof(char));
 //				addq(item);
 //			}
 //			break;
 //		case 2:
-//			printf("¸î °³¸¦ »èÁ¦? => ");
+//			printf("ëª‡ ê°œë¥¼ ì‚­ì œ? => ");
 //			scanf_s("%d", &count);
 //			for (i = 0; i < count; i++)
 //			{
 //				element temp = deleteq();
-//				printf("»èÁ¦: %c\n", temp.key);
+//				printf("ì‚­ì œ: %c\n", temp.key);
 //			}
 //			break;
 //		case 3:
@@ -271,7 +271,7 @@
 //	}
 //}
 
-/* ¹®ÀÚ ÀúÀå ¿¬°á¸®½ºÆ® ½ºÅÃ */
+/* ë¬¸ì ì €ì¥ ì—°ê²°ë¦¬ìŠ¤íŠ¸ ìŠ¤íƒ */
 
 //#include <stdio.h>
 //#include <stdlib.h>
@@ -300,8 +300,8 @@
 //element stackEmpty()
 //{
 //	element dummy = { '\0' };
-//	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	return dummy;
 //}
 //element pop()
@@ -334,7 +334,7 @@
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define MAX_STACKS 10 // ½ºÅÃÀÇ ÃÖ´ë ¼ö
+//#define MAX_STACKS 10 // ìŠ¤íƒì˜ ìµœëŒ€ ìˆ˜
 //#define MALLOC(p, s)\
 // if (! ((p) = (stackPointer)malloc(s))) {\
 //fprintf(stderr, "Insufficient memory");\
@@ -360,8 +360,8 @@
 //element stackEmpty()
 //{
 //	element dummy = { '\0' };
-//	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Stack is Empty\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	return dummy;
 //}
 //element pop(int i)
@@ -389,31 +389,31 @@
 //
 //	while (1)
 //	{
-//		printf("1. »ğÀÔ 2. »èÁ¦ 3. Ãâ·Â 4. Á¾·á => ");
+//		printf("1. ì‚½ì… 2. ì‚­ì œ 3. ì¶œë ¥ 4. ì¢…ë£Œ => ");
 //		scanf_s("%d", &menu);
 //		switch (menu)
 //		{
 //		case 1:
-//			printf("¸î °³¸¦ »ğÀÔ? => ");
+//			printf("ëª‡ ê°œë¥¼ ì‚½ì…? => ");
 //			scanf_s("%d", &count);
 //			for (i = 0; i < count; i++)
 //			{
-//				printf("ÀÔ·Â: ");
+//				printf("ì…ë ¥: ");
 //				scanf_s(" %c", &item.key, sizeof(char));
 //				push(0, item);
 //			}
 //			break;
 //		case 2:
-//			printf("¸î °³¸¦ »èÁ¦? => ");
+//			printf("ëª‡ ê°œë¥¼ ì‚­ì œ? => ");
 //			scanf_s("%d", &count);
 //			for (i = 0; i < count; i++)
 //			{
 //				element temp = pop(0);
-//				printf("»èÁ¦: %c\n", temp.key);
+//				printf("ì‚­ì œ: %c\n", temp.key);
 //			}
 //			break;
 //		case 3:
-//			printStack(top[0]); // ´ÙÁß ½ºÅÃ¿¡¼­ index 0¿¡ ÇØ´çÇÏ´Â ½ºÅÃ¸¸ »ç¿ë
+//			printStack(top[0]); // ë‹¤ì¤‘ ìŠ¤íƒì—ì„œ index 0ì— í•´ë‹¹í•˜ëŠ” ìŠ¤íƒë§Œ ì‚¬ìš©
 //			break;
 //		case 4:
 //			return 0;
@@ -423,7 +423,7 @@
 //	}
 //}
 
-/* µ¿Àû ¿¬°á Å¥ */
+/* ë™ì  ì—°ê²° í */
 
 //#include <stdio.h>
 //#include <stdlib.h>
@@ -433,7 +433,7 @@
 //fprintf(stderr, "Insufficient memory");\
 //exit(EXIT_FAILURE);\
 //}
-//#define MAX_QUEUE 10 // Å¥ÀÇ ÃÖ´ë ¿ø¼Ò¼ö
+//#define MAX_QUEUE 10 // íì˜ ìµœëŒ€ ì›ì†Œìˆ˜
 //typedef struct {
 //	int key;
 //} element;
@@ -444,7 +444,7 @@
 //} stack;
 //queuePointer front[MAX_QUEUE], rear[MAX_QUEUE];
 //void addq(int i, element item)
-//{ // Å¥ iÀÇ µÚ¿¡ ¿ø¼Ò¸¦ »ğÀÔ
+//{ // í iì˜ ë’¤ì— ì›ì†Œë¥¼ ì‚½ì…
 //	queuePointer temp;
 //	MALLOC(temp, sizeof(*temp));
 //	temp->data = item;
@@ -458,12 +458,12 @@
 //element queueEmpty()
 //{
 //	element dummy = { '\0' };
-//	fprintf(stderr, "Queue is empty\n"); // standard error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(1); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "Queue is empty\n"); // standard error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(1); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	return dummy;
 //}
 //element deleteq(int i)
-//{ /* Å¥ i·ÎºÎÅÍ ¿ø¼Ò¸¦ »èÁ¦ */
+//{ /* í ië¡œë¶€í„° ì›ì†Œë¥¼ ì‚­ì œ */
 //	queuePointer temp = front[i];
 //	element item;
 //	if (!temp)
@@ -503,7 +503,7 @@
 //};
 //queuePointer front[MAX_QUEUE], rear[MAX_QUEUE];
 //void addq(int i, element item)
-//{ // Å¥ iÀÇ µÚ¿¡ ¿ø¼Ò¸¦ »ğÀÔ
+//{ // í iì˜ ë’¤ì— ì›ì†Œë¥¼ ì‚½ì…
 //	queuePointer temp;
 //	MALLOC(temp, sizeof(*temp));
 //	temp->data = item;
@@ -517,12 +517,12 @@
 //element queueEmpty()
 //{
 //	element dummy = { '\0' };
-//	fprintf(stderr, "queue is empty\n"); // standard error: ¿¡·¯ ¸Ş¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//	exit(1); // exit(1): ¿¡·¯ ¸Ş¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//	fprintf(stderr, "queue is empty\n"); // standard error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ì¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//	exit(1); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ë¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	return dummy;
 //}
 //element deleteq(int i)
-//{ /* Å¥ i·ÎºÎÅÍ ¿ø¼Ò¸¦ »èÁ¦ */
+//{ /* í ië¡œë¶€í„° ì›ì†Œë¥¼ ì‚­ì œ */
 //	queuePointer temp = front[i];
 //	element item;
 //	if (!temp)
@@ -546,31 +546,31 @@
 //
 //	while (1)
 //	{
-//		printf("1. »ğÀÔ 2. »èÁ¦ 3. Ãâ·Â 4. Á¾·á => ");
+//		printf("1. ì‚½ì… 2. ì‚­ì œ 3. ì¶œë ¥ 4. ì¢…ë£Œ => ");
 //		scanf_s("%d", &menu);
 //		switch (menu)
 //		{
 //		case 1:
-//			printf("¸î °³¸¦ »ğÀÔ? => ");
+//			printf("ëª‡ ê°œë¥¼ ì‚½ì…? => ");
 //			scanf_s("%d", &count);
 //			for (i = 0; i < count; i++)
 //			{
-//				printf("ÀÔ·Â: ");
+//				printf("ì…ë ¥: ");
 //				scanf_s(" %c", &item.key, sizeof(char));
 //				addq(0, item);
 //			}
 //			break;
 //		case 2:
-//			printf("¸î °³¸¦ »èÁ¦? => ");
+//			printf("ëª‡ ê°œë¥¼ ì‚­ì œ? => ");
 //			scanf_s("%d", &count);
 //			for (i = 0; i < count; i++)
 //			{
 //				element temp = deleteq(0);
-//				printf("»èÁ¦: %c\n", temp.key);
+//				printf("ì‚­ì œ: %c\n", temp.key);
 //			}
 //			break;
 //		case 3:
-//			printQueue(front[0]); // ´ÙÁß Å¥¿¡¼­ index 0¿¡ ÇØ´çÇÏ´Â Å¥¸¸ »ç¿ë
+//			printQueue(front[0]); // ë‹¤ì¤‘ íì—ì„œ index 0ì— í•´ë‹¹í•˜ëŠ” íë§Œ ì‚¬ìš©
 //			break;
 //		case 4:
 //			return 0;
@@ -580,28 +580,28 @@
 //	}
 //}
 
-/* (P.75) ÇÁ·Î±×·¥ 2.6: µÎ ´ÙÇ×½ÄÀ» ´õÇÏ´Â ÇÔ¼ö */
+/* (P.75) í”„ë¡œê·¸ë¨ 2.6: ë‘ ë‹¤í•­ì‹ì„ ë”í•˜ëŠ” í•¨ìˆ˜ */
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define MAX_TERMS 100 // ¹è¿­ termsÀÇ ÃÖ´ë Å©±â
-//#define COMPARE(x, y) (((x) < (y)) ? -1: ((x) == (y)) ? 0: 1) // x, y ¸¦ ºñ±³ÇÏ´Â »ïÇ×¿¬»êÀÚ ¸ÅÅ©·Î ÇÔ¼ö
+//#define MAX_TERMS 100 // ë°°ì—´ termsì˜ ìµœëŒ€ í¬ê¸°
+//#define COMPARE(x, y) (((x) < (y)) ? -1: ((x) == (y)) ? 0: 1) // x, y ë¥¼ ë¹„êµí•˜ëŠ” ì‚¼í•­ì—°ì‚°ì ë§¤í¬ë¡œ í•¨ìˆ˜
 //typedef struct
 //{
-//	float coef; // °è¼ö
-//	int expon; // Áö¼ö
+//	float coef; // ê³„ìˆ˜
+//	int expon; // ì§€ìˆ˜
 //} polynomial;
 //polynomial terms[MAX_TERMS];
 //int avail = 0;
-//void attach(float coefficient, int exponent) // °è¼ö¿Í Áö¼ö¸¦ Àü´Ş.
-//{ // »õ·Î¿î Ç×À» ´ÙÇ×½Ä¿¡ Ã·°¡ÇÑ´Ù.
+//void attach(float coefficient, int exponent) // ê³„ìˆ˜ì™€ ì§€ìˆ˜ë¥¼ ì „ë‹¬.
+//{ // ìƒˆë¡œìš´ í•­ì„ ë‹¤í•­ì‹ì— ì²¨ê°€í•œë‹¤.
 //	if (avail >= MAX_TERMS)
 //	{
-//		fprintf(stderr, "´ÙÇ×½Ä¿¡ Ç×ÀÌ ³Ê¹« ¸¹´Ù.\n");
+//		fprintf(stderr, "ë‹¤í•­ì‹ì— í•­ì´ ë„ˆë¬´ ë§ë‹¤.\n");
 //		exit(1);
 //	}
 //	terms[avail].coef = coefficient;
-//	terms[avail++].expon = exponent; // avail À§Ä¡¿¡ ³Ö°í availÀ» ÇÏ³ª Áõ°¡ ½ÃÅ´
+//	terms[avail++].expon = exponent; // avail ìœ„ì¹˜ì— ë„£ê³  availì„ í•˜ë‚˜ ì¦ê°€ ì‹œí‚´
 //}
 //void padd(int startA, int finishA, int startB, int finishB, int* startD, int* finishD)
 //{
@@ -612,28 +612,28 @@
 //	{
 //		switch (COMPARE(terms[startA].expon, terms[startB].expon))
 //		{
-//		case -1: // A(x)ÀÇ exponÀÌ B(x)ÀÇ exponº¸´Ù ÀÛÀº °æ¿ì
+//		case -1: // A(x)ì˜ exponì´ B(x)ì˜ exponë³´ë‹¤ ì‘ì€ ê²½ìš°
 //			attach(terms[startB].coef, terms[startB].expon);
 //			startB++;
 //			break;
-//		case 0: // A(x)¿Í B(X)ÀÇ exponÀÌ °°Àº °æ¿ì
+//		case 0: // A(x)ì™€ B(X)ì˜ exponì´ ê°™ì€ ê²½ìš°
 //			coefficient = terms[startA].coef + terms[startB].coef;
-//			if (coefficient) // coef°¡ 0ÀÌ µÇ´Â °æ¿ì Á¦¿Ü
+//			if (coefficient) // coefê°€ 0ì´ ë˜ëŠ” ê²½ìš° ì œì™¸
 //				attach(coefficient, terms[startA].expon);
 //			startA++;
 //			startB++;
 //			break;
-//		case 1: // A(x)ÀÇ exponÀÌ B(x)ÀÇ exponº¸´Ù Å« °æ¿ì
+//		case 1: // A(x)ì˜ exponì´ B(x)ì˜ exponë³´ë‹¤ í° ê²½ìš°
 //			attach(terms[startA].coef, terms[startA].expon);
 //			startA++;
 //		}
 //	}
 //
-//	for (; startA <= finishA; startA++) // A(x)ÀÇ ³ª¸ÓÁö Ç×µéÀ» Ã·°¡ÇÑ´Ù.
+//	for (; startA <= finishA; startA++) // A(x)ì˜ ë‚˜ë¨¸ì§€ í•­ë“¤ì„ ì²¨ê°€í•œë‹¤.
 //		attach(terms[startA].coef, terms[startA].expon);
 //	for (; startB <= finishB; startB++)
 //		attach(terms[startB].coef, terms[startB].expon);
-//	*finishD = avail - 1; // availÀÇ ¸¶Áö¸· index¸¦ ÀúÀå
+//	*finishD = avail - 1; // availì˜ ë§ˆì§€ë§‰ indexë¥¼ ì €ì¥
 //}
 //void main()
 //{
@@ -641,32 +641,32 @@
 //	int exponent;
 //	int startA, finishA, startB, finishB, n;
 //	int startD, finishD;
-//	printf("´ÙÇ×½Ä µ¡¼À ÇÁ·Î±×·¥\n");
-//	printf("ÃÖ°íÂ÷Ç×ºÎÅÍ ¼ø¼­´ë·Î °è¼ö¿Í Áö¼ö¸¦ ÀÔ·ÂÇÏ½Ã°í, °è¼ö¿¡ 0À» ÀÔ·ÂÇÏ¸é ÇØ´ç ´ÙÇ×½ÄÀÇ ÀÔ·ÂÀº Á¾·áµË´Ï´Ù.\n");
+//	printf("ë‹¤í•­ì‹ ë§ì…ˆ í”„ë¡œê·¸ë¨\n");
+//	printf("ìµœê³ ì°¨í•­ë¶€í„° ìˆœì„œëŒ€ë¡œ ê³„ìˆ˜ì™€ ì§€ìˆ˜ë¥¼ ì…ë ¥í•˜ì‹œê³ , ê³„ìˆ˜ì— 0ì„ ì…ë ¥í•˜ë©´ í•´ë‹¹ ë‹¤í•­ì‹ì˜ ì…ë ¥ì€ ì¢…ë£Œë©ë‹ˆë‹¤.\n");
 //
-//	printf("\n´ÙÇ×½Ä A(x)\n\n");
+//	printf("\në‹¤í•­ì‹ A(x)\n\n");
 //	startA = avail;
-//	while (1) // ´ÙÇ×½Ä A(x) ÀÔ·Â
+//	while (1) // ë‹¤í•­ì‹ A(x) ì…ë ¥
 //	{
-//		printf("´ÙÇ×½Ä A(x)ÀÇ °è¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. : ");
+//		printf("ë‹¤í•­ì‹ A(x)ì˜ ê³„ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. : ");
 //		scanf_s("%f", &coefficient);
 //		if (coefficient == 0)
 //			break;
-//		printf("´ÙÇ×½Ä A(x)ÀÇ Áö¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. : ");
+//		printf("ë‹¤í•­ì‹ A(x)ì˜ ì§€ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. : ");
 //		scanf_s("%d", &exponent);
 //		attach(coefficient, exponent);
 //		printf("\n");
 //	}
 //	finishA = avail - 1;
-//	printf("\n´ÙÇ×½Ä B(x)\n\n");
+//	printf("\në‹¤í•­ì‹ B(x)\n\n");
 //	startB = avail;
-//	while (1) // ´ÙÇ×½Ä B(x) ÀÔ·Â
+//	while (1) // ë‹¤í•­ì‹ B(x) ì…ë ¥
 //	{
-//		printf("´ÙÇ×½Ä B(x)ÀÇ °è¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. : ");
+//		printf("ë‹¤í•­ì‹ B(x)ì˜ ê³„ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. : ");
 //		scanf_s("%f", &coefficient);
 //		if (coefficient == 0)
 //			break;
-//		printf("´ÙÇ×½Ä B(x)ÀÇ Áö¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. : ");
+//		printf("ë‹¤í•­ì‹ B(x)ì˜ ì§€ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. : ");
 //		scanf_s("%d", &exponent);
 //		attach(coefficient, exponent);
 //		printf("\n");
@@ -675,14 +675,14 @@
 //	startD = avail;
 //	finishD = avail;
 //
-//	printf("\nA(x) = "); // ´ÙÇ×½Ä A(x) Ãâ·Â
+//	printf("\nA(x) = "); // ë‹¤í•­ì‹ A(x) ì¶œë ¥
 //	for (n = startA; n <= finishA; n++)
 //	{
 //		printf("%.1fx^%d ", terms[n].coef, terms[n].expon);
 //		if (n != finishA)
 //			printf("+ ");
 //	}
-//	printf("\nB(x) = "); // ´ÙÇ×½Ä B(x) Ãâ·Â
+//	printf("\nB(x) = "); // ë‹¤í•­ì‹ B(x) ì¶œë ¥
 //	for (n = startB; n <= finishB; n++)
 //	{
 //		printf("%.1fx^%d ", terms[n].coef, terms[n].expon);
@@ -700,11 +700,11 @@
 //	printf("\n");
 //}
 
-/* µ¿Àû ¿¬°á ¸®½ºÆ® ´ÙÇ×½ÄÀÇ µ¡¼À */
+/* ë™ì  ì—°ê²° ë¦¬ìŠ¤íŠ¸ ë‹¤í•­ì‹ì˜ ë§ì…ˆ */
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define COMPARE(x, y) (((x) < (y)) ? -1: ((x) == (y)) ? 0: 1) // x, y ¸¦ ºñ±³ÇÏ´Â »ïÇ×¿¬»êÀÚ ¸ÅÅ©·Î ÇÔ¼ö
+//#define COMPARE(x, y) (((x) < (y)) ? -1: ((x) == (y)) ? 0: 1) // x, y ë¥¼ ë¹„êµí•˜ëŠ” ì‚¼í•­ì—°ì‚°ì ë§¤í¬ë¡œ í•¨ìˆ˜
 //#define MALLOC(p, s)\
 // if (! ((p) = (polyPointer)malloc(s))) {\
 //fprintf(stderr, "insufficient memory");\
@@ -718,7 +718,7 @@
 //} polyNode;
 //polyPointer a, b;
 //void attach(int coefficient, int exponent, polyPointer* ptr)
-//{ // coef = coefficientÀÌ°í expon = exponentÀÎ »õ·Î¿î ³ëµå¸¦ »ı¼ºÇÏ°í, ±×°ÍÀ» ptr¿¡ ÀÇÇØ ÂüÁ¶µÇ´Â ³ëµå¿¡ Ã·°¡ÇÑ´Ù. ptrÀ» °»½ÅÇÏ¿© ÀÌ »õ·Î¿î ³ëµå¸¦ ÂüÁ¶ÇÏµµ·Ï ÇÑ´Ù.
+//{ // coef = coefficientì´ê³  expon = exponentì¸ ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ìƒì„±í•˜ê³ , ê·¸ê²ƒì„ ptrì— ì˜í•´ ì°¸ì¡°ë˜ëŠ” ë…¸ë“œì— ì²¨ê°€í•œë‹¤. ptrì„ ê°±ì‹ í•˜ì—¬ ì´ ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ì°¸ì¡°í•˜ë„ë¡ í•œë‹¤.
 //	polyPointer temp;
 //	MALLOC(temp, sizeof(*temp));
 //	temp->coef = coefficient;
@@ -727,7 +727,7 @@
 //	*ptr = temp;
 //}
 //polyPointer padd(polyPointer a, polyPointer b)
-//{ // a¿Í b°¡ ÇÕ»êµÈ ´ÙÇ×½ÄÀ» ¹İÈ¯
+//{ // aì™€ bê°€ í•©ì‚°ëœ ë‹¤í•­ì‹ì„ ë°˜í™˜
 //	polyPointer c, rear, temp;
 //	int sum;
 //	MALLOC(rear, sizeof(*rear));
@@ -749,11 +749,11 @@
 //			attach(a->coef, a->expon, &rear);
 //			a = a->link;
 //		}
-//	// ¸®½ºÆ® a¿Í ¸®½ºÆ® bÀÇ ³ª¸ÓÁö¸¦ º¹»ç
+//	// ë¦¬ìŠ¤íŠ¸ aì™€ ë¦¬ìŠ¤íŠ¸ bì˜ ë‚˜ë¨¸ì§€ë¥¼ ë³µì‚¬
 //	for (; a; a = a->link) attach(a->coef, a->expon, &rear);
 //	for (; b; b = b->link) attach(b->coef, b->expon, &rear);
 //	rear->link = NULL;
-//	// ÇÊ¿ä ¾ø´Â ÃÊ±â ³ëµå¸¦ »èÁ¦
+//	// í•„ìš” ì—†ëŠ” ì´ˆê¸° ë…¸ë“œë¥¼ ì‚­ì œ
 //	temp = c;
 //	c = c->link;
 //	free(temp);
@@ -763,16 +763,16 @@
 //{
 //	for (; first; first = first->link)
 //	{
-//		if (first->link) // NULL °ªÀÌ ³ª¿À¸é ´ÙÀ½ Ç×ÀÌ ¾øÀ½
+//		if (first->link) // NULL ê°’ì´ ë‚˜ì˜¤ë©´ ë‹¤ìŒ í•­ì´ ì—†ìŒ
 //		{
-//			if (first->coef < 0) // °è¼ö°¡ 0º¸´Ù ÀÛÀ» ¶§
+//			if (first->coef < 0) // ê³„ìˆ˜ê°€ 0ë³´ë‹¤ ì‘ì„ ë•Œ
 //				printf("(%dx^%d) + ", first->coef, first->expon);
 //			else
 //				printf("%dx^%d + ", first->coef, first->expon);
 //		}
 //		else
 //		{
-//			if (first->coef < 0) // °è¼ö°¡ 0º¸´Ù ÀÛÀ» ¶§
+//			if (first->coef < 0) // ê³„ìˆ˜ê°€ 0ë³´ë‹¤ ì‘ì„ ë•Œ
 //				printf("(%dx^%d)", first->coef, first->expon);
 //			else
 //				printf("%dx^%d", first->coef, first->expon);
@@ -784,31 +784,31 @@
 //{
 //	polyPointer rearA, rearB, temp, c;
 //
-//	// ´ÙÇ×½Ä a »ı¼º: 3x^14 + 2x^8 + 1
+//	// ë‹¤í•­ì‹ a ìƒì„±: 3x^14 + 2x^8 + 1
 //	MALLOC(a, sizeof(*a));
 //	rearA = a;
 //	attach(3, 14, &rearA);
 //	attach(2, 8, &rearA);
 //	attach(1, 0, &rearA);
 //	rearA->link = NULL;
-//	temp = a; a = a->link; free(temp); // Çì´õ Á¦°Å
+//	temp = a; a = a->link; free(temp); // í—¤ë” ì œê±°
 //
-//	// ´ÙÇ×½Ä b »ı¼º: 8x^14 -3x^10 + 10x^6
+//	// ë‹¤í•­ì‹ b ìƒì„±: 8x^14 -3x^10 + 10x^6
 //	MALLOC(b, sizeof(*b));
 //	rearB = b;
 //	attach(8, 14, &rearB);
 //	attach(-3, 10, &rearB);
 //	attach(10, 6, &rearB);
 //	rearB->link = NULL;
-//	temp = b; b = b->link; free(temp); // Çì´õ Á¦°Å
+//	temp = b; b = b->link; free(temp); // í—¤ë” ì œê±°
 //
-//	// Ãâ·Â: a, b
+//	// ì¶œë ¥: a, b
 //	printf("Polynomial A(x) = ");
 //	printPoly(a);
 //	printf("Polynomial B(x) = ");
 //	printPoly(b);
 //
-//	// µ¡¼À °á°ú
+//	// ë§ì…ˆ ê²°ê³¼
 //	c = padd(a, b);
 //	printf("Polynomial A(x) + B(x) = ");
 //	printPoly(c);
