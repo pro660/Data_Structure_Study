@@ -1,5 +1,5 @@
-/* 4. ±³Àç ±×¸² 5.16ÀÇ ÀÌÁøÆ®¸®¸¦ ¿¬°á Ç¥ÇöÀ¸·Î ±¸¼ºÇÑ ´ÙÀ½
-ÁßÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.1), ÀüÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.2), ÈÄÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.3) ±¸ÇöÇÏ±â */
+/* 4. êµìž¬ ê·¸ë¦¼ 5.16ì˜ ì´ì§„íŠ¸ë¦¬ë¥¼ ì—°ê²° í‘œí˜„ìœ¼ë¡œ êµ¬ì„±í•œ ë‹¤ìŒ
+ì¤‘ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.1), ì „ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.2), í›„ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.3) êµ¬í˜„í•˜ê¸° */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@ typedef struct node{
 	treePointer leftChild, rightChild;
 };
 void mallocRightChild(treePointer first, char data)
-{	// Æ®¸®ÀÇ ¿À¸¥ÂÊ ÀÚ½Ä »ý¼º.
+{	// íŠ¸ë¦¬ì˜ ì˜¤ë¥¸ìª½ ìžì‹ ìƒì„±.
 	treePointer temp;
 	MALLOC(temp, sizeof(*temp));
 	temp->rightChild = NULL;
@@ -23,7 +23,7 @@ void mallocRightChild(treePointer first, char data)
 	first->rightChild = temp;
 }
 treePointer mallocLeftChild(treePointer first, char data)
-{	// Æ®¸®ÀÇ ¿ÞÂÊ ÀÚ½Ä »ý¼º.
+{	// íŠ¸ë¦¬ì˜ ì™¼ìª½ ìžì‹ ìƒì„±.
 	treePointer temp;
 	MALLOC(temp, sizeof(*temp));
 	temp->rightChild = NULL;
@@ -33,7 +33,7 @@ treePointer mallocLeftChild(treePointer first, char data)
 	return first->leftChild;
 }
 void arithmeticTree(treePointer root)
-{	// (P. 221) ±×¸² 5.16 ÀÌÁøÆ®¸® ±¸Çö.
+{	// (P. 221) ê·¸ë¦¼ 5.16 ì´ì§„íŠ¸ë¦¬ êµ¬í˜„.
 	treePointer Child;
 
 	root->data = '+';
@@ -47,7 +47,7 @@ void arithmeticTree(treePointer root)
 	Child = mallocLeftChild(Child, 'A');
 }
 void inorder(treePointer ptr)
-{	// ÁßÀ§ Æ®¸® ¼øÈ¸
+{	// ì¤‘ìœ„ íŠ¸ë¦¬ ìˆœíšŒ
 	if (ptr)
 	{
 		inorder(ptr->leftChild);
@@ -56,7 +56,7 @@ void inorder(treePointer ptr)
 	}
 }
 void preorder(treePointer ptr)
-{	// ÀüÀ§ Æ®¸® ¼øÈ¸
+{	// ì „ìœ„ íŠ¸ë¦¬ ìˆœíšŒ
 	if (ptr)
 	{
 		printf("%c", ptr->data);
@@ -65,7 +65,7 @@ void preorder(treePointer ptr)
 	}
 }
 void postorder(treePointer ptr)
-{	// ÈÄÀ§ Æ®¸® ¼øÈ¸
+{	// í›„ìœ„ íŠ¸ë¦¬ ìˆœíšŒ
 	if (ptr)
 	{
 		postorder(ptr->leftChild);
@@ -78,11 +78,11 @@ int main()
 	treePointer root;
 	MALLOC(root, sizeof(*root));
 	arithmeticTree(root);
-	printf("ÁßÀ§ ¼øÈ¸: ");
+	printf("ì¤‘ìœ„ ìˆœíšŒ: ");
 	inorder(root);
-	printf("\nÀüÀ§ ¼øÈ¸: ");
+	printf("\nì „ìœ„ ìˆœíšŒ: ");
 	preorder(root);
-	printf("\nÈÄÀ§ ¼øÈ¸: ");
+	printf("\ní›„ìœ„ ìˆœíšŒ: ");
 	postorder(root);
 	printf("\n");
 }
