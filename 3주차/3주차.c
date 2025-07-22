@@ -1,40 +1,40 @@
 /*
-1. Èñ¼ÒÇà·ÄÀÇ ÀüÄ¡ (±³Àç ÇÁ·Î±×·¥ 2.8)
-2. Èñ¼ÒÇà·ÄÀÇ ºü¸¥ ÀüÄ¡ (±³Àç ÇÁ·Î±×·¥ 2.9)
-3. 1, 2¹ø ¾Ë°í¸®ÁòÀÇ ½Ã°£º¹Àâµµ¸¦ °è»êÇØº¸±â
-4. ±³Àç ±×¸² 5.16ÀÇ ÀÌÁøÆ®¸®¸¦ ¿¬°á Ç¥ÇöÀ¸·Î ±¸¼ºÇÑ ´ÙÀ½
-ÁßÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.1), ÀüÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.2), ÈÄÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.3) ±¸ÇöÇÏ±â
+1. í¬ì†Œí–‰ë ¬ì˜ ì „ì¹˜ (êµìž¬ í”„ë¡œê·¸ëž¨ 2.8)
+2. í¬ì†Œí–‰ë ¬ì˜ ë¹ ë¥¸ ì „ì¹˜ (êµìž¬ í”„ë¡œê·¸ëž¨ 2.9)
+3. 1, 2ë²ˆ ì•Œê³ ë¦¬ì¦˜ì˜ ì‹œê°„ë³µìž¡ë„ë¥¼ ê³„ì‚°í•´ë³´ê¸°
+4. êµìž¬ ê·¸ë¦¼ 5.16ì˜ ì´ì§„íŠ¸ë¦¬ë¥¼ ì—°ê²° í‘œí˜„ìœ¼ë¡œ êµ¬ì„±í•œ ë‹¤ìŒ
+ì¤‘ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.1), ì „ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.2), í›„ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.3) êµ¬í˜„í•˜ê¸°
 */
 
-/* 1. Èñ¼ÒÇà·ÄÀÇ ÀüÄ¡ (±³Àç ÇÁ·Î±×·¥ 2.8) */
+/* 1. í¬ì†Œí–‰ë ¬ì˜ ì „ì¹˜ (êµìž¬ í”„ë¡œê·¸ëž¨ 2.8) */
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define MAX_TERMS 101 // ÃÖ´ë Ç×ÀÇ ¼ö + 1
+//#define MAX_TERMS 101 // ìµœëŒ€ í•­ì˜ ìˆ˜ + 1
 //typedef struct
 //{
-//	int col; // ¿­
-//	int row; // Çà
-//	int value; // °ª
+//	int col; // ì—´
+//	int row; // í–‰
+//	int value; // ê°’
 //} term;
 //term a[MAX_TERMS];
 //term b[MAX_TERMS];
 //void transpose(term a[], term b[])
-//{	// a¸¦ ÀüÄ¡½ÃÄÑ b¸¦ »ý¼º
+//{	// aë¥¼ ì „ì¹˜ì‹œì¼œ bë¥¼ ìƒì„±
 //	int n, i, j, currentb;
 //
-//	n = a[0].value; // ÃÑ ¿ø¼Ò ¼ö
-//	b[0].row = a[0].col; // bÀÇ Çà ¼ö = aÀÇ ¿­ ¼ö
-//	b[0].col = a[0].row; // bÀÇ ¿­ ¼ö = aÀÇ Çà ¼ö
+//	n = a[0].value; // ì´ ì›ì†Œ ìˆ˜
+//	b[0].row = a[0].col; // bì˜ í–‰ ìˆ˜ = aì˜ ì—´ ìˆ˜
+//	b[0].col = a[0].row; // bì˜ ì—´ ìˆ˜ = aì˜ í–‰ ìˆ˜
 //	b[0].value = n;
 //
 //	if (n > 0)
-//	{	// 0ÀÌ ¾Æ´Ñ Çà·Ä (¿ø¼Ò°¡ ÇÏ³ª¶óµµ ÀÖ´Â Çà·Ä)
+//	{	// 0ì´ ì•„ë‹Œ í–‰ë ¬ (ì›ì†Œê°€ í•˜ë‚˜ë¼ë„ ìžˆëŠ” í–‰ë ¬)
 //		currentb = 1;
-//		for (i = 0; i < a[0].col; i++) // a¿¡¼­ÀÇ ¿­º° ÀüÄ¡
-//			for (j = 1; j <= n; j++) // ÇöÀçÀÇ ¿­·ÎºÎÅÍ ¿ø¼Ò¸¦ Ã£´Â´Ù.
+//		for (i = 0; i < a[0].col; i++) // aì—ì„œì˜ ì—´ë³„ ì „ì¹˜
+//			for (j = 1; j <= n; j++) // í˜„ìž¬ì˜ ì—´ë¡œë¶€í„° ì›ì†Œë¥¼ ì°¾ëŠ”ë‹¤.
 //				if (a[j].col == i)
-//				{	// ÇöÀçÀÇ ¿­¿¡ ÀÖ´Â ¿ø¼Ò¸¦ b¿¡ Ã·°¡ÇÑ´Ù.
+//				{	// í˜„ìž¬ì˜ ì—´ì— ìžˆëŠ” ì›ì†Œë¥¼ bì— ì²¨ê°€í•œë‹¤.
 //					b[currentb].row = a[j].col;
 //					b[currentb].col = a[j].row;
 //					b[currentb].value = a[j].value;
@@ -46,39 +46,39 @@
 //{
 //	int i;
 //
-//	printf("ÇàÀÇ °³¼ö: ");
+//	printf("í–‰ì˜ ê°œìˆ˜: ");
 //	scanf_s("%d", &a[0].row);
-//	printf("¿­ÀÇ °³¼ö: ");
+//	printf("ì—´ì˜ ê°œìˆ˜: ");
 //	scanf_s("%d", &a[0].col);
-//	printf("°ªÀÇ °³¼ö: ");
+//	printf("ê°’ì˜ ê°œìˆ˜: ");
 //	scanf_s("%d", &a[0].value);
 //
 //	if (a[0].value >= MAX_TERMS)
 //	{
-//		fprintf(stderr, "°ªÀÇ °³¼ö°¡ ³Ê¹« Å®´Ï´Ù.\n"); // Standard Error: ¿¡·¯ ¸Þ¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//		exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Þ¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//		fprintf(stderr, "ê°’ì˜ ê°œìˆ˜ê°€ ë„ˆë¬´ í½ë‹ˆë‹¤.\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ìž¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//		exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ëž¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	}
 //	else
 //		for (i = 1; i <= a[0].value; i++)
 //		{
-//			printf("\nÇà: ");
+//			printf("\ní–‰: ");
 //			scanf_s("%d", &a[i].row);
-//			printf("¿­: ");
+//			printf("ì—´: ");
 //			scanf_s("%d", &a[i].col);
 //			if (a[i].row >= a[0].row || a[i].col >= a[0].col)
 //			{
-//				fprintf(stderr, "ÀÔ·ÂÇÑ Çà ¶Ç´Â ¿­ÀÌ %d * %d º¸´Ù Å®´Ï´Ù.\n", a[0].row, a[0].col);
-//				// Standard Error: ¿¡·¯ ¸Þ¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//				exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Þ¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//				fprintf(stderr, "ìž…ë ¥í•œ í–‰ ë˜ëŠ” ì—´ì´ %d * %d ë³´ë‹¤ í½ë‹ˆë‹¤.\n", a[0].row, a[0].col);
+//				// Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ìž¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//				exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ëž¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //			}
-//			printf("°ª: ");
+//			printf("ê°’: ");
 //			scanf_s("%d", &a[i].value);
 //		}
 //
 //	transpose(a, b);
 //
 //	printf("\n\tA\t\t\t\t\tB\n");
-//	printf("\tÇà\t¿­\t°ª\t\t\tÇà\t¿­\t°ª\n");
+//	printf("\tí–‰\tì—´\tê°’\t\t\tí–‰\tì—´\tê°’\n");
 //	for (i = 0; i <= a[0].value; i++)
 //	{
 //		printf("a[%d]%6d%8d%8d\t\t", i, a[i].row, a[i].col, a[i].value);
@@ -86,43 +86,43 @@
 //	}
 //}
 
-/* 2. Èñ¼ÒÇà·ÄÀÇ ºü¸¥ ÀüÄ¡ (±³Àç ÇÁ·Î±×·¥ 2.9) */
+/* 2. í¬ì†Œí–‰ë ¬ì˜ ë¹ ë¥¸ ì „ì¹˜ (êµìž¬ í”„ë¡œê·¸ëž¨ 2.9) */
 
 //#include <stdio.h>
 //#include <stdlib.h>
-//#define MAX_TERMS 101 // ÃÖ´ë Ç×ÀÇ ¼ö + 1
+//#define MAX_TERMS 101 // ìµœëŒ€ í•­ì˜ ìˆ˜ + 1
 //#define MAX_COL 101
 //typedef struct
 //{
-//	int col; // ¿­
-//	int row; // Çà
-//	int value; // °ª
+//	int col; // ì—´
+//	int row; // í–‰
+//	int value; // ê°’
 //} term;
 //term a[MAX_TERMS];
 //term b[MAX_TERMS];
 //void fastTranspose(term a[], term b[])
-//{	// a¸¦ ÀüÄ¡½ÃÄÑ b¿¡ ÀúÀå.
+//{	// aë¥¼ ì „ì¹˜ì‹œì¼œ bì— ì €ìž¥.
 //	int rowTerms[MAX_COL], startingPos[MAX_COL];
 //	int i, j, numCols = a[0].col, numTerms = a[0].value;
 //	b[0].row = numCols; b[0].col = a[0].row;
 //	b[0].value = numTerms;
 //	if (numTerms > 0)
-//	{	// 0ÀÌ ¾Æ´Ñ Çà·Ä
-//		for (i = 0; i < numCols; i++) // rowTerms ¹è¿­À» 0À¸·Î ÃÊ±âÈ­.
+//	{	// 0ì´ ì•„ë‹Œ í–‰ë ¬
+//		for (i = 0; i < numCols; i++) // rowTerms ë°°ì—´ì„ 0ìœ¼ë¡œ ì´ˆê¸°í™”.
 //			rowTerms[i] = 0;
-//		for (i = 1; i <= numTerms; i++) // °ªÀÌ ÀÖ´Â ÇàÀ» index·Î ¹è¿­¿¡ °ªÀÌ ÀÖ´Ù°í Ç¥½Ã.
+//		for (i = 1; i <= numTerms; i++) // ê°’ì´ ìžˆëŠ” í–‰ì„ indexë¡œ ë°°ì—´ì— ê°’ì´ ìžˆë‹¤ê³  í‘œì‹œ.
 //			rowTerms[a[i].col]++;
-//		// rowTerms¿¡ ´ëÇÑ °ª °è»ê.
+//		// rowTermsì— ëŒ€í•œ ê°’ ê³„ì‚°.
 //		startingPos[0] = 1;
 //		for (i = 1; i < numCols; i++)
 //			startingPos[i] = startingPos[i - 1] + rowTerms[i - 1];
 //		/*
-//		startingPos °è»ê.
-//		rowTerms[i - 1]: Çà i - 1 ¿¡ ÀÖ´Â ¿ø¼ÒÀÇ ¼ö
-//		startingPos[i - 1]: Çà i - 1 ÀÇ ½ÃÀÛ À§Ä¡
+//		startingPos ê³„ì‚°.
+//		rowTerms[i - 1]: í–‰ i - 1 ì— ìžˆëŠ” ì›ì†Œì˜ ìˆ˜
+//		startingPos[i - 1]: í–‰ i - 1 ì˜ ì‹œìž‘ ìœ„ì¹˜
 //		*/
 //		for (i = 1; i <= numTerms; i++)
-//		{	// 3¿ø¼Ò ½ÖÀ» ÀüÄ¡ Çà·Ä¿¡ ÀúÀå.
+//		{	// 3ì›ì†Œ ìŒì„ ì „ì¹˜ í–‰ë ¬ì— ì €ìž¥.
 //			j = startingPos[a[i].col]++;
 //			b[j].row = a[i].col; b[j].col = a[i].row;
 //			b[j].value = a[i].value;
@@ -133,39 +133,39 @@
 //{
 //	int i;
 //
-//	printf("ÇàÀÇ °³¼ö: ");
+//	printf("í–‰ì˜ ê°œìˆ˜: ");
 //	scanf_s("%d", &a[0].row);
-//	printf("¿­ÀÇ °³¼ö: ");
+//	printf("ì—´ì˜ ê°œìˆ˜: ");
 //	scanf_s("%d", &a[0].col);
-//	printf("°ªÀÇ °³¼ö: ");
+//	printf("ê°’ì˜ ê°œìˆ˜: ");
 //	scanf_s("%d", &a[0].value);
 //
 //	if (a[0].value >= MAX_TERMS)
 //	{
-//		fprintf(stderr, "°ªÀÇ °³¼ö°¡ ³Ê¹« Å®´Ï´Ù.\n"); // Standard Error: ¿¡·¯ ¸Þ¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//		exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Þ¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//		fprintf(stderr, "ê°’ì˜ ê°œìˆ˜ê°€ ë„ˆë¬´ í½ë‹ˆë‹¤.\n"); // Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ìž¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//		exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ëž¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //	}
 //	else
 //		for (i = 1; i <= a[0].value; i++)
 //		{
-//			printf("\nÇà: ");
+//			printf("\ní–‰: ");
 //			scanf_s("%d", &a[i].row);
-//			printf("¿­: ");
+//			printf("ì—´: ");
 //			scanf_s("%d", &a[i].col);
 //			if (a[i].row >= a[0].row || a[i].col >= a[0].col)
 //			{
-//				fprintf(stderr, "ÀÔ·ÂÇÑ Çà ¶Ç´Â ¿­ÀÌ %d * %d º¸´Ù Å®´Ï´Ù.\n", a[0].row, a[0].col);
-//				// Standard Error: ¿¡·¯ ¸Þ¼¼Áö¸¦ Ãâ·ÂÇÒ ÀåÄ¡ (¹öÆÛ¾øÀÌ ¹Ù·Î Ãâ·Â °¡´É)
-//				exit(EXIT_FAILURE); // exit(1): ¿¡·¯ ¸Þ¼¼Áö Á¾·á -> ÇÁ·Î±×·¥, ÇÁ·Î¼¼¼­ Á¾·á
+//				fprintf(stderr, "ìž…ë ¥í•œ í–‰ ë˜ëŠ” ì—´ì´ %d * %d ë³´ë‹¤ í½ë‹ˆë‹¤.\n", a[0].row, a[0].col);
+//				// Standard Error: ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì¶œë ¥í•  ìž¥ì¹˜ (ë²„í¼ì—†ì´ ë°”ë¡œ ì¶œë ¥ ê°€ëŠ¥)
+//				exit(EXIT_FAILURE); // exit(1): ì—ëŸ¬ ë©”ì„¸ì§€ ì¢…ë£Œ -> í”„ë¡œê·¸ëž¨, í”„ë¡œì„¸ì„œ ì¢…ë£Œ
 //			}
-//			printf("°ª: ");
+//			printf("ê°’: ");
 //			scanf_s("%d", &a[i].value);
 //		}
 //
 //	fastTranspose(a, b);
 //
 //	printf("\n\tA\t\t\t\t\tB\n");
-//	printf("\tÇà\t¿­\t°ª\t\t\tÇà\t¿­\t°ª\n");
+//	printf("\tí–‰\tì—´\tê°’\t\t\tí–‰\tì—´\tê°’\n");
 //	for (i = 0; i <= a[0].value; i++)
 //	{
 //		printf("a[%d]%6d%8d%8d\t\t", i, a[i].row, a[i].col, a[i].value);
@@ -173,8 +173,8 @@
 //	}
 //}
 
-/* 4. ±³Àç ±×¸² 5.16ÀÇ ÀÌÁøÆ®¸®¸¦ ¿¬°á Ç¥ÇöÀ¸·Î ±¸¼ºÇÑ ´ÙÀ½
-ÁßÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.1), ÀüÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.2), ÈÄÀ§¼øÈ¸(ÇÁ·Î±×·¥ 5.3) ±¸ÇöÇÏ±â */
+/* 4. êµìž¬ ê·¸ë¦¼ 5.16ì˜ ì´ì§„íŠ¸ë¦¬ë¥¼ ì—°ê²° í‘œí˜„ìœ¼ë¡œ êµ¬ì„±í•œ ë‹¤ìŒ
+ì¤‘ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.1), ì „ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.2), í›„ìœ„ìˆœíšŒ(í”„ë¡œê·¸ëž¨ 5.3) êµ¬í˜„í•˜ê¸° */
 
 //#include <stdio.h>
 //#include <stdlib.h>
@@ -189,7 +189,7 @@
 //	treePointer leftChild, rightChild;
 //};
 //void mallocRightChild(treePointer first, char data)
-//{	// Æ®¸®ÀÇ ¿À¸¥ÂÊ ÀÚ½Ä »ý¼º.
+//{	// íŠ¸ë¦¬ì˜ ì˜¤ë¥¸ìª½ ìžì‹ ìƒì„±.
 //	treePointer temp;
 //	MALLOC(temp, sizeof(*temp));
 //	temp->rightChild = NULL;
@@ -198,7 +198,7 @@
 //	first->rightChild = temp;
 //}
 //treePointer mallocLeftChild(treePointer first, char data)
-//{	// Æ®¸®ÀÇ ¿ÞÂÊ ÀÚ½Ä »ý¼º.
+//{	// íŠ¸ë¦¬ì˜ ì™¼ìª½ ìžì‹ ìƒì„±.
 //	treePointer temp;
 //	MALLOC(temp, sizeof(*temp));
 //	temp->rightChild = NULL;
@@ -208,7 +208,7 @@
 //	return first->leftChild;
 //}
 //void arithmeticTree(treePointer root)
-//{	// (P. 221) ±×¸² 5.16 ÀÌÁøÆ®¸® ±¸Çö.
+//{	// (P. 221) ê·¸ë¦¼ 5.16 ì´ì§„íŠ¸ë¦¬ êµ¬í˜„.
 //	treePointer Child;
 //
 //	root->data = '+';
@@ -222,7 +222,7 @@
 //	Child = mallocLeftChild(Child, 'A');
 //}
 //void inorder(treePointer ptr)
-//{	// ÁßÀ§ Æ®¸® ¼øÈ¸
+//{	// ì¤‘ìœ„ íŠ¸ë¦¬ ìˆœíšŒ
 //	if (ptr)
 //	{
 //		inorder(ptr->leftChild);
@@ -231,7 +231,7 @@
 //	}
 //}
 //void preorder(treePointer ptr)
-//{	// ÀüÀ§ Æ®¸® ¼øÈ¸
+//{	// ì „ìœ„ íŠ¸ë¦¬ ìˆœíšŒ
 //	if (ptr)
 //	{
 //		printf("%c", ptr->data);
@@ -240,7 +240,7 @@
 //	}
 //}
 //void postorder(treePointer ptr)
-//{	// ÈÄÀ§ Æ®¸® ¼øÈ¸
+//{	// í›„ìœ„ íŠ¸ë¦¬ ìˆœíšŒ
 //	if (ptr)
 //	{
 //		postorder(ptr->leftChild);
@@ -253,11 +253,11 @@
 //	treePointer root;
 //	MALLOC(root, sizeof(*root));
 //	arithmeticTree(root);
-//	printf("ÁßÀ§ ¼øÈ¸: ");
+//	printf("ì¤‘ìœ„ ìˆœíšŒ: ");
 //	inorder(root);
-//	printf("\nÀüÀ§ ¼øÈ¸: ");
+//	printf("\nì „ìœ„ ìˆœíšŒ: ");
 //	preorder(root);
-//	printf("\nÈÄÀ§ ¼øÈ¸: ");
+//	printf("\ní›„ìœ„ ìˆœíšŒ: ");
 //	postorder(root);
 //	printf("\n");
 //}
