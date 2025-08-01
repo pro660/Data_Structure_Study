@@ -1,4 +1,4 @@
-/* 2. Èü ¼ÒÆ® ±¸Çö(±³Àç ÇÁ·Î±×·¥ 7.12, 7.13) */
+/* 2. í™ ì†ŒíŠ¸ êµ¬í˜„(êµì¬ í”„ë¡œê·¸ë¨ 7.12, 7.13) */
 
 #include <stdio.h>
 #define MAX_LIST_SIZE 11
@@ -15,16 +15,16 @@ void adjust(element a[], int root, int n)
 	element temp;
 	temp = a[root];
 	rootkey = a[root].key;
-	child = 2 * root; // ¿ŞÂÊ ÀÚ½Ä ³ëµå.
+	child = 2 * root; // ì™¼ìª½ ìì‹ ë…¸ë“œ.
 	while (child <= n)
 	{
 		if ((child < n) && (a[child].key < a[child + 1].key))
 			child++;
-		if (rootkey > a[child].key) // ·çÆ®¿Í ÃÖ´ë°ª ºñ±³.
+		if (rootkey > a[child].key) // ë£¨íŠ¸ì™€ ìµœëŒ€ê°’ ë¹„êµ.
 			break;
 		else
 		{
-			a[child / 2] = a[child]; // ºÎ¸ğ·Î ÀÌµ¿.
+			a[child / 2] = a[child]; // ë¶€ëª¨ë¡œ ì´ë™.
 			child *= 2;
 		}
 	}
