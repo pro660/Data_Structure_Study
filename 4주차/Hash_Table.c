@@ -1,7 +1,7 @@
-/* 3. C¾ğ¾î Å°¿öµå(char, for, while µîµî)¸¦ Å°·Î ÇÏ¿© »ğÀÔ, °Ë»ö, »èÁ¦ÇÏ´Â ÇØ½Ã Å×ÀÌºí ±¸Çö
-(¹öÅ¶ÀÇ Å©±â´Â ÀÚÀ¯, ½½·ÔÀº 1, Á¦»êÇÔ¼ö, ¿À¹öÇÃ·Î¿ì Ã³¸®´Â ¼±ÇüÁ¶»ç¹ı ÀÌ¿ë) */
+/* 3. Cì–¸ì–´ í‚¤ì›Œë“œ(char, for, while ë“±ë“±)ë¥¼ í‚¤ë¡œ í•˜ì—¬ ì‚½ì…, ê²€ìƒ‰, ì‚­ì œí•˜ëŠ” í•´ì‹œ í…Œì´ë¸” êµ¬í˜„
+(ë²„í‚·ì˜ í¬ê¸°ëŠ” ììœ , ìŠ¬ë¡¯ì€ 1, ì œì‚°í•¨ìˆ˜, ì˜¤ë²„í”Œë¡œìš° ì²˜ë¦¬ëŠ” ì„ í˜•ì¡°ì‚¬ë²• ì´ìš©) */
 
-#define _CRT_SECURE_NO_WARNINGS // Visual Studio¿¡¼­ º¸¾È °æ°í¸¦ ¹«½Ã.
+#define _CRT_SECURE_NO_WARNINGS // Visual Studioì—ì„œ ë³´ì•ˆ ê²½ê³ ë¥¼ ë¬´ì‹œ.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,25 +16,25 @@ typedef struct
     int key;
 } element;
 
-element* ht[MAX_BUCKET_SIZE];   // ÇØ½Ã Å×ÀÌºí: Æ÷ÀÎÅÍ ¹è¿­
-int b = MAX_BUCKET_SIZE;        // bucket ¼ö
+element* ht[MAX_BUCKET_SIZE];   // í•´ì‹œ í…Œì´ë¸”: í¬ì¸í„° ë°°ì—´
+int b = MAX_BUCKET_SIZE;        // bucket ìˆ˜
 
 int h(int key)
-{   // Á¦»ê ÇÔ¼ö
+{   // ì œì‚° í•¨ìˆ˜
     return key % b;
 }
 
 int make_key(const char* str)
-{   // ¹®ÀÚ¿­À» Å°·Î º¯È¯ (¾Æ½ºÅ° ÇÕ)
+{   // ë¬¸ìì—´ì„ í‚¤ë¡œ ë³€í™˜ (ì•„ìŠ¤í‚¤ í•©)
     int sum = 0;
     while (*str) sum += *str++;
     return sum;
 }
 
 element* search(int k)
-{	/* ¼±Çü Á¶»ç¹ı ÇØ½Ì Å×ÀÌºí ht (°¢ ¹öÅ¶Àº ÇÑ ½½·Ô¸¸ °¡Áü)¿¡¼­ k¸¦ Å½»ö.
-	ÀÌ Å°¸¦ °¡Áø ½ÖÀ» ¹ß°ßÇÏ¸é, ±× ½ÖÀ» °¡¸®Å°´Â Æ÷ÀÎÅÍ¸¦ ¹İÈ¯.
-	±×·¸Áö ¾ÊÀ¸¸é NULLÀ» ¹İÈ¯. */
+{	/* ì„ í˜• ì¡°ì‚¬ë²• í•´ì‹± í…Œì´ë¸” ht (ê° ë²„í‚·ì€ í•œ ìŠ¬ë¡¯ë§Œ ê°€ì§)ì—ì„œ kë¥¼ íƒìƒ‰.
+	ì´ í‚¤ë¥¼ ê°€ì§„ ìŒì„ ë°œê²¬í•˜ë©´, ê·¸ ìŒì„ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°ë¥¼ ë°˜í™˜.
+	ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ NULLì„ ë°˜í™˜. */
 	int homeBucket, currentBucket;
 	homeBucket = h(k);
 	for (currentBucket = homeBucket; ht[currentBucket] && ht[currentBucket]->key != k;)
@@ -49,7 +49,7 @@ element* search(int k)
 }
 
 void insert(const char* str)
-{   // »ğÀÔ ÇÔ¼ö
+{   // ì‚½ì… í•¨ìˆ˜
     int key = make_key(str);
     int homeBucket = h(key);
     int currentBucket = homeBucket;
@@ -69,7 +69,7 @@ void insert(const char* str)
 }
 
 void deletehash(const char* str)
-{   // »èÁ¦ ÇÔ¼ö
+{   // ì‚­ì œ í•¨ìˆ˜
     int key = make_key(str);
     element* target = search(key);
     if (target != NULL && strcmp(target->item, str) == 0) {
@@ -88,7 +88,7 @@ void deletehash(const char* str)
 }
 
 void print_table()
-{   // ÇØ½Ã Å×ÀÌºí Ãâ·Â
+{   // í•´ì‹œ í…Œì´ë¸” ì¶œë ¥
     printf("\nHash Table:\n");
     for (int i = 0; i < b; i++) {
         if (ht[i] != NULL)
@@ -100,7 +100,7 @@ void print_table()
 
 int main()
 {
-    // »ğÀÔ
+    // ì‚½ì…
     insert("char");
     insert("int");
     insert("for");
@@ -114,7 +114,7 @@ int main()
 
     print_table();
 
-    // °Ë»ö: "while"
+    // ê²€ìƒ‰: "while"
     int key = make_key("while");
     element* result = search(key);
     if (result != NULL && strcmp(result->item, "while") == 0)
@@ -122,11 +122,11 @@ int main()
     else
         printf("\n\"while\" not found\n");
 
-    // »èÁ¦
+    // ì‚­ì œ
     deletehash("while");
-    deletehash("main");  // Á¸ÀçÇÏÁö ¾Ê´Â Å°
+    deletehash("main");  // ì¡´ì¬í•˜ì§€ ì•ŠëŠ” í‚¤
 
-    // ÃÖÁ¾ Ãâ·Â
+    // ìµœì¢… ì¶œë ¥
     print_table();
 
     return 0;
