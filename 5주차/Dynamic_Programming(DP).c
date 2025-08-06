@@ -1,4 +1,4 @@
-/* µ¿Àû °èÈ¹¹ý */
+/* ë™ì  ê³„íšë²• */
 /*
 https://www.youtube.com/watch?v=T4WUpYsCqSU&t=1s
 https://8iggy.tistory.com/143#:~:text=%EB%8F%99%EC%A0%81%20%EA%B3%84%ED%9A%8D%EB%B2%95%20%EA%B5%AC%ED%98%84%EC%97%90%EB%8A%94%202%20%EA%B0%80%EC%A7%80%EA%B0%80%20%EC%9E%88%EB%8A%94%EB%8D%B0%20%EB%8C%80%ED%91%9C%EC%A0%81%20DP%20%EB%AC%B8%EC%A0%9C%EC%9D%B8%20%ED%94%BC%EB%B3%B4%EB%82%98%EC%B9%98%20%EC%88%98%EC%97%B4%EB%A1%9C%20%EC%98%88%EC%8B%9C%EB%A5%BC%20%EB%93%A4%EC%96%B4%EB%B3%B4%EC%9E%90.
@@ -7,7 +7,7 @@ https://www.google.com/search?q=%EB%8F%99%EC%A0%81+%EA%B3%84%ED%9A%8D%EB%B2%95+%
 
 //#include <stdio.h>
 //
-//// Àç±Í ÇÔ¼ö¸¦ ÀÌ¿ëÇÑ ÇÇº¸³ªÄ¡ ¼ö¿­ (¸Þ¸ðÀÌÁ¦ÀÌ¼Ç ¹ÌÀû¿ë)
+//// ìž¬ê·€ í•¨ìˆ˜ë¥¼ ì´ìš©í•œ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ (ë©”ëª¨ì´ì œì´ì…˜ ë¯¸ì ìš©)
 //int fibonacci_recursive(int n)
 //{
 //    if (n <= 1) {
@@ -16,7 +16,7 @@ https://www.google.com/search?q=%EB%8F%99%EC%A0%81+%EA%B3%84%ED%9A%8D%EB%B2%95+%
 //    return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2);
 //}
 //
-//// µ¿Àû °èÈ¹¹ý (¸Þ¸ðÀÌÁ¦ÀÌ¼Ç)À» ÀÌ¿ëÇÑ ÇÇº¸³ªÄ¡ ¼ö¿­
+//// ë™ì  ê³„íšë²• (ë©”ëª¨ì´ì œì´ì…˜)ì„ ì´ìš©í•œ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´
 //int fibonacci_dp(int n)
 //{
 //    int dp[n + 1];
@@ -31,15 +31,15 @@ https://www.google.com/search?q=%EB%8F%99%EC%A0%81+%EA%B3%84%ED%9A%8D%EB%B2%95+%
 //int main()
 //{
 //    int num = 10;
-//    printf("ÇÇº¸³ªÄ¡ ¼ö¿­ (%d): %d (Àç±Í)\n", num, fibonacci_recursive(num));
-//    printf("ÇÇº¸³ªÄ¡ ¼ö¿­ (%d): %d (µ¿Àû °èÈ¹¹ý)\n", num, fibonacci_dp(num));
+//    printf("í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ (%d): %d (ìž¬ê·€)\n", num, fibonacci_recursive(num));
+//    printf("í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ (%d): %d (ë™ì  ê³„íšë²•)\n", num, fibonacci_dp(num));
 //    return 0;
 //}
 
 #include <stdio.h>
 #define MAX_SIZE 100
 
-// Àç±Í ÇÔ¼ö¸¦ ÀÌ¿ëÇÑ ÇÇº¸³ªÄ¡ ¼ö¿­ (¸Þ¸ðÀÌÁ¦ÀÌ¼Ç ¹ÌÀû¿ë)
+// ìž¬ê·€ í•¨ìˆ˜ë¥¼ ì´ìš©í•œ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ (ë©”ëª¨ì´ì œì´ì…˜ ë¯¸ì ìš©)
 int fibonacci_recursive(int n)
 {
     if (n <= 1) {
@@ -48,10 +48,10 @@ int fibonacci_recursive(int n)
     return fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2);
 }
 
-// µ¿Àû °èÈ¹¹ý (¸Þ¸ðÀÌÁ¦ÀÌ¼Ç)À» ÀÌ¿ëÇÑ ÇÇº¸³ªÄ¡ ¼ö¿­
+// ë™ì  ê³„íšë²• (ë©”ëª¨ì´ì œì´ì…˜)ì„ ì´ìš©í•œ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´
 int fibonacci_dp(int n)
 {
-    int dp[MAX_SIZE];  // ÃæºÐÈ÷ Å« Á¤Àû ¹è¿­ ¼±¾ð
+    int dp[MAX_SIZE];  // ì¶©ë¶„ížˆ í° ì •ì  ë°°ì—´ ì„ ì–¸
     dp[0] = 0;
     dp[1] = 1;
     for (int i = 2; i <= n; i++) {
@@ -63,7 +63,7 @@ int fibonacci_dp(int n)
 int main()
 {
     int num = 10;
-    printf("ÇÇº¸³ªÄ¡ ¼ö¿­ (%d): %d (Àç±Í)\n", num, fibonacci_recursive(num));
-    printf("ÇÇº¸³ªÄ¡ ¼ö¿­ (%d): %d (µ¿Àû °èÈ¹¹ý)\n", num, fibonacci_dp(num));
+    printf("í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ (%d): %d (ìž¬ê·€)\n", num, fibonacci_recursive(num));
+    printf("í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ (%d): %d (ë™ì  ê³„íšë²•)\n", num, fibonacci_dp(num));
     return 0;
 }
