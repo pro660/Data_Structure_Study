@@ -1,4 +1,4 @@
-/* ºÐÇÒ Á¤º¹ */
+/* ë¶„í•  ì •ë³µ */
 /*
 https://best-coding.tistory.com/88
 https://www.google.com/search?q=%EB%B6%84%ED%95%A0%EC%A0%95%EB%B3%B5+%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+c&sca_esv=d5e847b1dc31b2cb&sxsrf=AE3TifNJ1qAyj0IZQVK8MEccEy2Cig1cAg%3A1754410926240&ei=ri-SaK65Dsyk2roP7Mic4Qo&ved=0ahUKEwiuyLGAivSOAxVMklYBHWwkJ6wQ4dUDCBA&uact=5&oq=%EB%B6%84%ED%95%A0%EC%A0%95%EB%B3%B5+%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+c&gs_lp=Egxnd3Mtd2l6LXNlcnAiG-u2hO2VoOygleuztSDslYzqs6DrpqzsppggYzIKECMYgAQYJxiKBTIIEAAYogQYiQUyBRAAGO8FMgUQABjvBTIFEAAY7wVIiQhQ7gRYngZwAXgAkAEAmAH1AaAB6ASqAQUwLjIuMbgBA8gBAPgBAZgCAqACzAHCAggQABiABBiwA8ICCxAAGIAEGLADGKIEwgILEAAYsAMYogQYiQXCAggQABiwAxjvBZgDAIgGAZAGBZIHAzEuMaAH-AyyBwMwLjG4B8UBwgcFMi0xLjHIBxI&sclient=gws-wiz-serp
@@ -64,14 +64,14 @@ https://www.google.com/search?q=%EB%B6%84%ED%95%A0%EC%A0%95%EB%B3%B5+%EC%95%8C%E
 //    int arr[] = { 12, 11, 13, 5, 6, 7 };
 //    int arr_size = sizeof(arr) / sizeof(arr[0]);
 //
-//    printf("Á¤·Ä Àü ¹è¿­: \n");
+//    printf("ì •ë ¬ ì „ ë°°ì—´: \n");
 //    for (int i = 0; i < arr_size; i++)
 //        printf("%d ", arr[i]);
 //    printf("\n");
 //
 //    mergeSort(arr, 0, arr_size - 1);
 //
-//    printf("Á¤·Ä ÈÄ ¹è¿­: \n");
+//    printf("ì •ë ¬ í›„ ë°°ì—´: \n");
 //    for (int i = 0; i < arr_size; i++)
 //        printf("%d ", arr[i]);
 //    printf("\n");
@@ -145,14 +145,14 @@ int main()
     int arr[] = { 12, 11, 13, 5, 6, 7 };
     int arr_size = sizeof(arr) / sizeof(arr[0]);
 
-    printf("Á¤·Ä Àü ¹è¿­: \n");
+    printf("ì •ë ¬ ì „ ë°°ì—´: \n");
     for (int i = 0; i < arr_size; i++)
         printf("%d ", arr[i]);
     printf("\n");
 
     mergeSort(arr, 0, arr_size - 1);
 
-    printf("Á¤·Ä ÈÄ ¹è¿­: \n");
+    printf("ì •ë ¬ í›„ ë°°ì—´: \n");
     for (int i = 0; i < arr_size; i++)
         printf("%d ", arr[i]);
     printf("\n");
