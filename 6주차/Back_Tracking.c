@@ -1,4 +1,4 @@
-/* πÈ ∆Æ∑¢≈∑ */
+/* Î∞± Ìä∏ÎûôÌÇπ */
 /*
 https://www.google.com/search?q=%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9+c%EC%96%B8%EC%96%B4&sca_esv=4978fba7b0bac1f0&sxsrf=AE3TifNNMoqcajY-gNeulY5IdtjB6Ku6Yw%3A1755065175338&ei=VyucaPazFM6Mvr0PjMLRwA8&ved=0ahUKEwi2u9Wij4ePAxVOhq8BHQxhFPgQ4dUDCBA&uact=5&oq=%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9+c%EC%96%B8%EC%96%B4&gs_lp=Egxnd3Mtd2l6LXNlcnAiFOuwse2KuOuemO2CuSBj7Ja47Ja0MgUQABiABDIGEAAYCBgeMgUQABjvBUiqGlDsAljNGHACeAGQAQCYAdMBoAGeDKoBBTAuNC40uAEDyAEA-AEBmAIHoALTCMICChAAGLADGNYEGEfCAgoQIxiABBgnGIoFwgIKEAAYgAQYFBiHAsICChAAGIAEGEMYigXCAggQABiABBiiBMICBBAAGB6YAwCIBgGQBgqSBwUyLjEuNKAH1ReyBwUwLjEuNLgHrgjCBwcyLTMuMy4xyAdP&sclient=gws-wiz-serp
 https://code-lab1.tistory.com/442
@@ -8,8 +8,8 @@ https://code-lab1.tistory.com/442
 #include <stdlib.h>
 #include <math.h>
 
-int n; // n x n ∫∏µÂ∆«¿« ≈©±‚ n 
-int* col; // ∞¢ «‡∫∞∑Œ ƒ˝¿« ø≠(column) ¿ßƒ° 
+int n; // n x n Î≥¥ÎìúÌåêÏùò ÌÅ¨Í∏∞ n 
+int* col; // Í∞Å ÌñâÎ≥ÑÎ°ú ÌÄ∏Ïùò Ïó¥(column) ÏúÑÏπò 
 
 void printQueens()
 {
@@ -20,12 +20,12 @@ void printQueens()
     exit(1);
 }
 
-int promising(int i) // ¿Ø∏¡«—¡ˆ √º≈© 
+int promising(int i) // Ïú†ÎßùÌïúÏßÄ Ï≤¥ÌÅ¨ 
 {
     int k = 1;
     while (k < i)
     {
-        if (col[i] == col[k] || abs(col[i] - col[k]) == abs(i - k)) // ªÛ«œ¡¬øÏ, ¥Î∞¢º± ªÛø° ¿÷¥¬ ¡ˆ 
+        if (col[i] == col[k] || abs(col[i] - col[k]) == abs(i - k)) // ÏÉÅÌïòÏ¢åÏö∞, ÎåÄÍ∞ÅÏÑ† ÏÉÅÏóê ÏûàÎäî ÏßÄ 
             return 0;
         k++;
     }
@@ -36,16 +36,16 @@ void queens(int i)
 {
     int j;
 
-    if (promising(i)) // ¿Ø∏¡«œ¥Ÿ∏È  
+    if (promising(i)) // Ïú†ÎßùÌïòÎã§Î©¥  
     {
-        if (i == n) // ∏∂¡ˆ∏∑ «‡±Ó¡ˆ º±≈√¿Ã ≥°≥µ¥Ÿ∏È 
+        if (i == n) // ÎßàÏßÄÎßâ ÌñâÍπåÏßÄ ÏÑ†ÌÉùÏù¥ ÎÅùÎÇ¨Îã§Î©¥ 
         {
-            printQueens(); // ƒ˝¿« ¿ßƒ° √‚∑¬ 
+            printQueens(); // ÌÄ∏Ïùò ÏúÑÏπò Ï∂úÎ†• 
             return;
         }
-        else // æ∆¡˜ ≥°≥™¡ˆ æ æ“¥Ÿ∏È 
+        else // ÏïÑÏßÅ ÎÅùÎÇòÏßÄ ÏïäÏïòÎã§Î©¥ 
         {
-            for (j = 1; j <= n; j++) // ∏µÁ ø≠ ≈Ωªˆ 
+            for (j = 1; j <= n; j++) // Î™®Îì† Ïó¥ ÌÉêÏÉâ 
             {
                 col[i + 1] = j;
                 queens(i + 1);
@@ -61,7 +61,7 @@ int main()
     scanf_s("%d", &n);
     col = (int*)malloc(sizeof(int) * (n + 1));
     queens(0);
-    printf("No solution"); // «ÿ∞·π˝¿Ã æ¯¿ª ∞ÊøÏ 
+    printf("No solution"); // Ìï¥Í≤∞Î≤ïÏù¥ ÏóÜÏùÑ Í≤ΩÏö∞ 
 
     return 0;
 }
