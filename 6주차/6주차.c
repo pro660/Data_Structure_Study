@@ -1,11 +1,11 @@
 /*
-´ÙÀ½ ÁÖÁ¦¿¡ ´ëÇØ ¾Ë°í¸®Áò ±³Àç³ª ÀÎÅÍ³Ý ÀÚ·á¸¦ Ã£¾Æ °³³ä Á¤¸®
-ÇÏ°í °¢ ÁÖÁ¦º°·Î ¿¹Á¦ ÇÁ·Î±×·¥ 1°³ ÀÌ»ó ÀÛ¼ºÇØº¸±â
-- Å½¿å ¾Ë°í¸®Áò
-- ¹é Æ®·¢Å·
+ë‹¤ìŒ ì£¼ì œì— ëŒ€í•´ ì•Œê³ ë¦¬ì¦˜ êµìž¬ë‚˜ ì¸í„°ë„· ìžë£Œë¥¼ ì°¾ì•„ ê°œë… ì •ë¦¬
+í•˜ê³  ê° ì£¼ì œë³„ë¡œ ì˜ˆì œ í”„ë¡œê·¸ëž¨ 1ê°œ ì´ìƒ ìž‘ì„±í•´ë³´ê¸°
+- íƒìš• ì•Œê³ ë¦¬ì¦˜
+- ë°± íŠ¸ëž™í‚¹
 */
 
-/* Å½¿å ¾Ë°í¸®Áò */
+/* íƒìš• ì•Œê³ ë¦¬ì¦˜ */
 /*
 https://www.google.com/search?q=%ED%83%90%EC%9A%95+%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+c%EC%96%B8%EC%96%B4&sca_esv=d8b04fc949d05faa&sxsrf=AE3TifOe-p87vJe7OqpPxnyk7XOFYaUkxQ%3A1755050204277&ei=3PCbaJXXEIabvr0P3-um8Q0&ved=0ahUKEwiVtfS_14aPAxWGja8BHd-1Kd4Q4dUDCBA&uact=5&oq=%ED%83%90%EC%9A%95+%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+c%EC%96%B8%EC%96%B4&gs_lp=Egxnd3Mtd2l6LXNlcnAiG-2DkOyalSDslYzqs6DrpqzsppggY-yWuOyWtDIIEAAYgAQYogQyBRAAGO8FMgUQABjvBTIFEAAY7wUyBRAAGO8FSKIaUJ0DWOwYcAV4AJABAJgByQGgAYAOqgEGMC4xMC4xuAEDyAEA-AEBmAIMoAKxCsICChAAGLADGNYEGEfCAgcQIRigARgKwgIKECMYgAQYJxiKBcICBRAAGIAEwgIEEAAYHsICBRAhGKABmAMAiAYBkAYKkgcFNS42LjGgB6IksgcFMC42LjG4B_AJwgcFMi02LjbIB24&sclient=gws-wiz-serp
 https://nolzaheo.tistory.com/13#:~:text=%EB%8F%99%EC%A0%84%EC%9D%98%20%EA%B0%9C%EC%88%98%EA%B0%80%20%EC%B5%9C%EC%86%8C%EA%B0%80%20%EB%90%98%EB%8F%84%EB%A1%9D%20%EA%B1%B0%EC%8A%A4%EB%A6%84%20%EB%8F%88%EC%9D%84%20%EC%A3%BC%EB%8A%94,%EC%9C%84%EC%97%90%EC%84%9C%20%EC%82%B4%ED%8E%B4%EB%B4%A4%EB%8D%98%203%EA%B0%80%EC%A7%80%20%EA%B5%AC%EC%84%B1%EC%9C%BC%EB%A1%9C%20%EC%A0%95%EB%A6%AC%ED%95%98%EB%A9%B4%20%EB%8B%A4%EC%9D%8C%EA%B3%BC%20%EA%B0%99%EB%8B%A4.
@@ -18,7 +18,7 @@ https://nolzaheo.tistory.com/13#:~:text=%EB%8F%99%EC%A0%84%EC%9D%98%20%EA%B0%9C%
 //    int num_coins = 0;
 //    int num_coin_types = sizeof(coin_types) / sizeof(coin_types[0]);
 //
-//    printf("°Å½º¸§µ·: ");
+//    printf("ê±°ìŠ¤ë¦„ëˆ: ");
 //    scanf_s("%d", &amount);
 //
 //    for (int i = 0; i < num_coin_types; i++)
@@ -30,11 +30,11 @@ https://nolzaheo.tistory.com/13#:~:text=%EB%8F%99%EC%A0%84%EC%9D%98%20%EA%B0%9C%
 //        }
 //    }
 //
-//    printf("ÃÖ¼Ò µ¿Àü °³¼ö: %d\n", num_coins);
+//    printf("ìµœì†Œ ë™ì „ ê°œìˆ˜: %d\n", num_coins);
 //    return 0;
 //}
 
-/* ¹é Æ®·¢Å· */
+/* ë°± íŠ¸ëž™í‚¹ */
 /*
 https://www.google.com/search?q=%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9+c%EC%96%B8%EC%96%B4&sca_esv=4978fba7b0bac1f0&sxsrf=AE3TifNNMoqcajY-gNeulY5IdtjB6Ku6Yw%3A1755065175338&ei=VyucaPazFM6Mvr0PjMLRwA8&ved=0ahUKEwi2u9Wij4ePAxVOhq8BHQxhFPgQ4dUDCBA&uact=5&oq=%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9+c%EC%96%B8%EC%96%B4&gs_lp=Egxnd3Mtd2l6LXNlcnAiFOuwse2KuOuemO2CuSBj7Ja47Ja0MgUQABiABDIGEAAYCBgeMgUQABjvBUiqGlDsAljNGHACeAGQAQCYAdMBoAGeDKoBBTAuNC40uAEDyAEA-AEBmAIHoALTCMICChAAGLADGNYEGEfCAgoQIxiABBgnGIoFwgIKEAAYgAQYFBiHAsICChAAGIAEGEMYigXCAggQABiABBiiBMICBBAAGB6YAwCIBgGQBgqSBwUyLjEuNKAH1ReyBwUwLjEuNLgHrgjCBwcyLTMuMy4xyAdP&sclient=gws-wiz-serp
 https://code-lab1.tistory.com/442
@@ -44,8 +44,8 @@ https://code-lab1.tistory.com/442
 //#include <stdlib.h>
 //#include <math.h>
 //
-//int n; // n x n º¸µåÆÇÀÇ Å©±â n 
-//int* col; // °¢ Çàº°·Î ÄýÀÇ ¿­(column) À§Ä¡ 
+//int n; // n x n ë³´ë“œíŒì˜ í¬ê¸° n 
+//int* col; // ê° í–‰ë³„ë¡œ í€¸ì˜ ì—´(column) ìœ„ì¹˜ 
 //
 //void printQueens()
 //{
@@ -56,12 +56,12 @@ https://code-lab1.tistory.com/442
 //    exit(1);
 //}
 //
-//int promising(int i) // À¯¸ÁÇÑÁö Ã¼Å© 
+//int promising(int i) // ìœ ë§í•œì§€ ì²´í¬ 
 //{
 //    int k = 1;
 //    while (k < i)
 //    {
-//        if (col[i] == col[k] || abs(col[i] - col[k]) == abs(i - k)) // »óÇÏÁÂ¿ì, ´ë°¢¼± »ó¿¡ ÀÖ´Â Áö 
+//        if (col[i] == col[k] || abs(col[i] - col[k]) == abs(i - k)) // ìƒí•˜ì¢Œìš°, ëŒ€ê°ì„  ìƒì— ìžˆëŠ” ì§€ 
 //            return 0;
 //        k++;
 //    }
@@ -72,16 +72,16 @@ https://code-lab1.tistory.com/442
 //{
 //    int j;
 //
-//    if (promising(i)) // À¯¸ÁÇÏ´Ù¸é  
+//    if (promising(i)) // ìœ ë§í•˜ë‹¤ë©´  
 //    {
-//        if (i == n) // ¸¶Áö¸· Çà±îÁö ¼±ÅÃÀÌ ³¡³µ´Ù¸é 
+//        if (i == n) // ë§ˆì§€ë§‰ í–‰ê¹Œì§€ ì„ íƒì´ ëë‚¬ë‹¤ë©´ 
 //        {
-//            printQueens(); // ÄýÀÇ À§Ä¡ Ãâ·Â 
+//            printQueens(); // í€¸ì˜ ìœ„ì¹˜ ì¶œë ¥ 
 //            return;
 //        }
-//        else // ¾ÆÁ÷ ³¡³ªÁö ¾Ê¾Ò´Ù¸é 
+//        else // ì•„ì§ ëë‚˜ì§€ ì•Šì•˜ë‹¤ë©´ 
 //        {
-//            for (j = 1; j <= n; j++) // ¸ðµç ¿­ Å½»ö 
+//            for (j = 1; j <= n; j++) // ëª¨ë“  ì—´ íƒìƒ‰ 
 //            {
 //                col[i + 1] = j;
 //                queens(i + 1);
@@ -97,7 +97,7 @@ https://code-lab1.tistory.com/442
 //    scanf_s("%d", &n);
 //    col = (int*)malloc(sizeof(int) * (n + 1));
 //    queens(0);
-//    printf("No solution"); // ÇØ°á¹ýÀÌ ¾øÀ» °æ¿ì 
+//    printf("No solution"); // í•´ê²°ë²•ì´ ì—†ì„ ê²½ìš° 
 //
 //    return 0;
 //}
